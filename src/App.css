@@ -1,0 +1,20 @@
+.App {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  transition: 1.5s;
+}
+
+div[contenteditable="true"] {
+  /*font-size: 21px;*/
+  /*line-height: 1.5;*/
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

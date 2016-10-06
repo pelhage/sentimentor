@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import './Index.css'
 import { Editor, EditorState, RichUtils } from 'draft-js';
 
+import StyleEditor from './StyleEditor'
+
 class BodyEditor extends Component {
   constructor(props) {
     super(props)
@@ -10,12 +12,11 @@ class BodyEditor extends Component {
     this.handleKeyCommand = this.handleKeyCommand.bind(this)
     this.onBoldClick = this.onBoldClick.bind(this)
     this.onItalicClick = this.onItalicClick.bind(this)
+    this.onUnderLineClick = this.onUnderLineClick.bind(this)
     this.toggleInlineStyle = this.toggleInlineStyle.bind(this)
   }
 
   componentDidMount() {
-    console.log('Going to focus onto editor')
-    console.log('Draft editor', this.refs.editor)
     this.refs.editor.focus()
   }
 
@@ -38,13 +39,17 @@ class BodyEditor extends Component {
 
   onBoldClick(e) {
     e.preventDefault()
-    console.log('Hello');
-    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
+    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'))
   }
 
   onItalicClick(e) {
     e.preventDefault()
-    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'ITALIC'));
+    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'ITALIC'))
+  }
+
+  onUnderLineClick(e) {
+    e.preventDefault()
+    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'UNDERLINE'));
   }
 
   handleKeyCommand(command) {
@@ -59,8 +64,11 @@ class BodyEditor extends Component {
   render() {
     return (
       <div className="BodyEditor">
-        <button onMouseDown={this.onBoldClick}>B</button>
-        <button onMouseDown={this.onItalicClick}>I</button>
+        <StyleEditor
+          onBoldClick={this.onBoldClick}
+          onItalicClick={this.onItalicClick}
+          onUnderLineClick={this.onUnderLineClick}
+        />
         <Editor
           editorState={this.state.editorState}
           handleKeyCommand={this.handleKeyCommand}

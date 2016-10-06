@@ -6,7 +6,7 @@
   width: 100%;
   margin: 0 auto;
   min-height: 100vh;
-  transition: 1.5s;
+  transition: 0.5s;
 }
 
 div[contenteditable="true"] {

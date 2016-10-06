@@ -4,6 +4,7 @@ import Header from './Header'
 import SentimentEditor from './Editor/SentimentEditor'
 import TitleEditor from './Editor/TitleEditor'
 import BodyEditor from './Editor/BodyEditor'
+import StyleEditor from './Editor/StyleEditor'
 
 import sentiment from 'sentiment'
 
@@ -13,7 +14,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.changeBG = this.changeBG.bind(this)
-    this.state = {color: '#ffffff'}
+    this.state = {color: '#f1F1d4', textColor: '#444444'}
   }
 
 /*
@@ -44,29 +45,38 @@ class App extends Component {
       }
       return negativeColors[9]
     }
-    return '#ffffff'
+    return '#f1F1d4'
   }
-  convertScoreToTextColor(score) {
-    if (score > 0) {
 
+  convertScoreToTextColor(score) {
+    // If the score is positive
+    if (score > 6 || (score * -1) > 6) {
+      return '#ffffff'
     }
+    return '#444444'
   }
 
   changeBG(words) {
-    let { score } = sentiment(words)
+    let { score, positive, negative } = sentiment(words)
     let color = this.convertScoreToColor(score)
-    this.setState({color})
+    let textColor = this.convertScoreToTextColor(score)
+    this.setState({color, textColor, score, positive, negative})
   }
 
   render() {
-    let { color } = this.state
-    let style = { backgroundColor: color }
+    let { color, textColor, score, positive, negative } = this.state
+    let style = { backgroundColor: color, color: textColor }
+    positive = positive || 0
+    negative = negative || 0
 
     return (
       <div className="App" style={style}>
         <Header>
           <h1>Sentimentor</h1>
           <p>Sentimentor is a text editor that responds to your input with real-time sentiment analysis.</p>
+          <div>Score: {score}</div>
+          <div>Positive Words: {positive.length}</div>
+          <div>Negative Words: {negative.length}</div>
         </Header>
         <SentimentEditor>
           <TitleEditor />

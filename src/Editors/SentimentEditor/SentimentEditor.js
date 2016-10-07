@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
-import './Index.css'
+import './index.css'
+import '../Index.css'
 
 const SentimentEditor = (props) => {
   return (

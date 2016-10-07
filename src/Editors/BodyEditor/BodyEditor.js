@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import './Index.css'
 import { Editor, EditorState, RichUtils } from 'draft-js';
 
-import StyleEditor from './StyleEditor'
+import StyleEditor from '../StyleEditor/StyleEditor'
+import './index.css'
 
 class BodyEditor extends Component {
   constructor(props) {
@@ -28,7 +28,6 @@ class BodyEditor extends Component {
   }
 
   toggleInlineStyle(inlineStyle) {
-    // console.log(inlineStyle);
     this.onChange(
       RichUtils.toggleInlineStyle(
         this.state.editorState,

@@ -19,29 +19,4 @@ to container */
 .DraftEditor-editorContainer, .DraftEditor-root {
   position: relative;
   z-index: 100;
-  /*background: red;*/
-}
-
-.SentimentEditor {
-  display: flex;
-  width: 100%;
-  max-width: 600px;
-  padding: 10px;
-  flex-direction: column;
-  align-items: center;
-  align-self: center;
-}
-
-.TitleEditor {
-  width: 100%;
-  font-size: 30px;
-  /*color: #202020;*/
-  text-align: left;
-  line-height: 1.15;
-}
-
-.BodyEditor {
-  display: block;
-  font-size: 22px;
-  /*border: 1px solid #ccc;*/
 }

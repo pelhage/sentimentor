@@ -8,13 +8,3 @@
   min-height: 100vh;
   transition: 0.5s;
 }
-
-div[contenteditable="true"] {
-  /*font-size: 21px;*/
-  /*line-height: 1.5;*/
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}

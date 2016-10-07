@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-
-import Header from './Header'
-import SentimentEditor from './Editor/SentimentEditor'
-import TitleEditor from './Editor/TitleEditor'
-import BodyEditor from './Editor/BodyEditor'
-import StyleEditor from './Editor/StyleEditor'
-
 import sentiment from 'sentiment'
+// Components
+import Header from './Header'
+// import SentimentEditor from './Editors/SentimentEditor'
+// import TitleEditor from './Editors/TitleEditor'
+// import BodyEditor from './Editors/BodyEditor'
 
+import SentimentEditor from './Editors/SentimentEditor'
+import TitleEditor from './Editors/TitleEditor'
+import BodyEditor from './Editors/BodyEditor'
+
+// Styling
 import './App.css';
 
 class App extends Component {
@@ -20,14 +23,11 @@ class App extends Component {
 /*
  * convertScoreToColor
  * uses `sentiment` NPM package to naively analyze sentiment
- * of users text.
- *
- * returns a score using AFINN list of english
+ * of users text. Returns a score using AFINN list of english
  * words by Finn Årup Nielsen. Each word rated
  * uses an integer from minus five (negative) and plus five (positive).
  *
- * @param {integer} score -
- * @description
+ * @param {integer} score - total score of words used
  */
   convertScoreToColor(score) {
     let positiveColors = ['#ebf2f9', '#d8e6f4', '#c4daef', '#b1cdea', '#9dc1e5', '#8ab5e0', '#76a8db', '#629cd6', '#4f90d1', '#3c84cc']
@@ -49,7 +49,6 @@ class App extends Component {
   }
 
   convertScoreToTextColor(score) {
-    // If the score is positive
     if (score > 6 || (score * -1) > 6) {
       return '#ffffff'
     }

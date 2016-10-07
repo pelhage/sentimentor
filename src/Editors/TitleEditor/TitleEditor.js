@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Index.css'
+import './index.css'
 import { Editor, EditorState } from 'draft-js';
 
 class TitleEditor extends Component {

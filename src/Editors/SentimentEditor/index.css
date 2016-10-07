@@ -1,0 +1,9 @@
+.SentimentEditor {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+}

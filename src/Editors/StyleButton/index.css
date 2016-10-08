@@ -1,0 +1,17 @@
+.style-button {
+  background: none;
+  box-sizing: border-box;
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+  color: #444;
+  border: 6px solid #444;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.active-button {
+  background: #444;
+  color: #fff;
+}

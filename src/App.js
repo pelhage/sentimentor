@@ -5,7 +5,7 @@ import Header from './Header'
 // import SentimentEditor from './Editors/SentimentEditor'
 // import TitleEditor from './Editors/TitleEditor'
 // import BodyEditor from './Editors/BodyEditor'
-
+import Score from './Score'
 import SentimentEditor from './Editors/SentimentEditor'
 import TitleEditor from './Editors/TitleEditor'
 import BodyEditor from './Editors/BodyEditor'
@@ -73,10 +73,12 @@ class App extends Component {
         <Header>
           <h1>Sentimentor</h1>
           <p>Sentimentor is a text editor that responds to your input with real-time sentiment analysis.</p>
-          <div>Score: {score}</div>
-          <div>Positive Words: {positive.length}</div>
-          <div>Negative Words: {negative.length}</div>
         </Header>
+        <Score
+          score={score}
+          positive={positive}
+          negative={negative}
+        />
         <SentimentEditor>
           <TitleEditor />
           <BodyEditor changeBG={this.changeBG} />

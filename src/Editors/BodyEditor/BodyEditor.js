@@ -1,8 +1,20 @@
 import React, { Component } from 'react'
 import { Editor, EditorState, RichUtils } from 'draft-js';
 
-import StyleEditor from '../StyleEditor/StyleEditor'
+import StyleEditor from '../StyleEditor'
+import InlineStyleControls from '../InlineStyleControls'
+import BlockStyleControls from '../BlockStyleControls'
 import './index.css'
+// Custom overrides for "code" style.
+
+const styleMap = {
+  CODE: {
+    backgroundColor: 'rgba(0, 0, 0, 0.05)',
+    fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
+    fontSize: 16,
+    padding: 2,
+  },
+};
 
 class BodyEditor extends Component {
   constructor(props) {
@@ -10,10 +22,8 @@ class BodyEditor extends Component {
     this.state = {editorState: EditorState.createEmpty(), color: "grey"}
     this.onChange = this.onChange.bind(this)
     this.handleKeyCommand = this.handleKeyCommand.bind(this)
-    this.onBoldClick = this.onBoldClick.bind(this)
-    this.onItalicClick = this.onItalicClick.bind(this)
-    this.onUnderLineClick = this.onUnderLineClick.bind(this)
     this.toggleInlineStyle = this.toggleInlineStyle.bind(this)
+    this.toggleBlockType = this.toggleBlockType.bind(this)
   }
 
   componentDidMount() {
@@ -27,6 +37,15 @@ class BodyEditor extends Component {
     })
   }
 
+  toggleBlockType(blockType) {
+    this.onChange(
+      RichUtils.toggleBlockType(
+        this.state.editorState,
+        blockType
+      )
+    );
+  }
+
   toggleInlineStyle(inlineStyle) {
     this.onChange(
       RichUtils.toggleInlineStyle(
@@ -34,21 +53,6 @@ class BodyEditor extends Component {
         inlineStyle
       )
     )
-  }
-
-  onBoldClick(e) {
-    e.preventDefault()
-    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'))
-  }
-
-  onItalicClick(e) {
-    e.preventDefault()
-    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'ITALIC'))
-  }
-
-  onUnderLineClick(e) {
-    e.preventDefault()
-    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'UNDERLINE'));
   }
 
   handleKeyCommand(command) {
@@ -61,15 +65,21 @@ class BodyEditor extends Component {
   }
 
   render() {
+    const { editorState } = this.state
     return (
       <div className="BodyEditor">
-        <StyleEditor
-          onBoldClick={this.onBoldClick}
-          onItalicClick={this.onItalicClick}
-          onUnderLineClick={this.onUnderLineClick}
-        />
+        <StyleEditor>
+          <InlineStyleControls
+            editorState={editorState}
+            onToggle={this.toggleInlineStyle}
+          />
+          <BlockStyleControls
+            editorState={editorState}
+            onToggle={this.toggleBlockType}
+          />
+        </StyleEditor>
         <Editor
-          editorState={this.state.editorState}
+          editorState={editorState}
           handleKeyCommand={this.handleKeyCommand}
           onChange={this.onChange}
           handleReturn={this.handleKeyPress}

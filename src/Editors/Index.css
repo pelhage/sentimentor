@@ -10,7 +10,7 @@
   position: absolute;
   left: 0;
   z-index: 0;
-  color: #ccc;
+  color: rgba(0,0,0, 0.3);
   /*background: green;*/
 }
 /* Specify editor containers as being relative,

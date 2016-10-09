@@ -8,4 +8,11 @@
   min-height: 100vh;
   transition: 0.5s;
   padding-left: 40px;
+  padding-top: 40px;
+}
+.light {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.dark {
+  color: rgba(0, 0, 0, 0.6) !important;
 }

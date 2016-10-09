@@ -2,16 +2,31 @@
   background: none;
   box-sizing: border-box;
   display: flex;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
-  color: #444;
-  border: 6px solid #444;
+  border: 3px solid;
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 3px 7px;
   cursor: pointer;
 }
 
 .active-button {
-  background: #444;
-  color: #fff;
+  /*background: rgba(0, 0, 0, 0.5);*/
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.light .active-button {
+  color: rgba(0, 0, 0, 0.7);
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(255, 255, 255, 1);
+}
+
+.dark .style-button {
+  border-color: rgba(0,0,0,0.7);
+}
+
+.dark .style-button.active-button {
+  color: rgba(255, 255, 255, 1);
+  background: rgba(0, 0, 0, 0.7);
+  border-color: rgba(0, 0, 0, 0.7);
 }

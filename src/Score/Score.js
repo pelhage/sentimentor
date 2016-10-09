@@ -1,13 +1,14 @@
 import React, { PropTypes } from 'react'
+import './index.css'
 
 const Score = (props) => {
   const { score, positive, negative } = props
 
   return (
-    <div>
-      <div>Score: {score}</div>
-      <div>Positive Words: {positive.length}</div>
-      <div>Negative Words: {negative.length}</div>
+    <div className="Score">
+      <p>Score: {score}</p>
+      <p>Positive Words: {positive.length}</p>
+      <p>Negative Words: {negative.length}</p>
     </div>
   )
 }

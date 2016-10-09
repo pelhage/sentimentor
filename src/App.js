@@ -49,15 +49,16 @@ class App extends Component {
   }
 
   convertScoreToTextColor(score) {
-    if (score > 6 || (score * -1) > 6) {
-      return '#ffffff'
+    if (score > 6 /*|| (score * -1) > 7*/) {
+      return 'light'
     }
-    return '#444444'
+    return 'dark'
   }
 
   changeBG(words) {
     let { score, positive, negative } = sentiment(words)
     let color = this.convertScoreToColor(score)
+
     let textColor = this.convertScoreToTextColor(score)
     this.setState({color, textColor, score, positive, negative})
   }
@@ -65,15 +66,11 @@ class App extends Component {
   render() {
     let { color, textColor, score, positive, negative } = this.state
     let style = { backgroundColor: color, color: textColor }
-    positive = positive || 0
-    negative = negative || 0
+    positive = positive || []
+    negative = negative || []
 
     return (
-      <div className="App" style={style}>
-        <Header>
-          <h1>Sentimentor</h1>
-          <p>Sentimentor is a text editor that responds to your input with real-time sentiment analysis.</p>
-        </Header>
+      <div className={"App " + textColor} style={style}>
         <Score
           score={score}
           positive={positive}
@@ -83,6 +80,11 @@ class App extends Component {
           <TitleEditor />
           <BodyEditor changeBG={this.changeBG} />
         </SentimentEditor>
+        <Header>
+          <h1>Sentimentor</h1>
+          <p>Sentimentor is a text editor that responds to your input with real-time sentiment analysis.</p>
+        </Header>
+
       </div>
     )
   }

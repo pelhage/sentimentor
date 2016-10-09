@@ -1,0 +1,7 @@
+p {
+  font-size: 13px;
+}
+.Score {
+  /*border: 1px dotted;*/
+  border-color: rgba(0,0,0,0.3)
+}

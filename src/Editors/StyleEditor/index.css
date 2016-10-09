@@ -3,13 +3,19 @@
   width: 100%;
   flex-direction: column;
   justify-content: space-between;
+  padding: 10px;
+  background: rgba(0,0,0,0.1);
 }
 
 .StyleEditor__controls {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin-bottom: 15px;
+  /*margin-bottom: 5px;*/
+}
+
+.StyleEditor__controls:last-child {
+  margin-bottom: 0
 }
 
 .StyleEditor__controls .style-button {

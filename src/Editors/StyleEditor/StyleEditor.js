@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import styles from './index.css'
+import './index.css'
 
 const StyleEditor = (props) => {
   return (
@@ -8,7 +8,6 @@ const StyleEditor = (props) => {
     </div>
   )
 }
-
 
 StyleEditor.propTypes = {
   onBoldClick: PropTypes.func,
